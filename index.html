@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f4f3ed" />
+    <meta name="description" content="Find complementary teammates for your next hackathon build." />
+    <title>TeamUp — Hackathon Team Matcher</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="/" aria-label="TeamUp home">
+          <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+          <span class="brand-word">team<span>up</span></span>
+          <span class="brand-tag">HACKATHON MATCHER</span>
+        </a>
+        <div class="topbar-right">
+          <span class="demo-badge"><span class="live-dot"></span> DEMO MODE</span>
+          <button class="profile-pill" type="button" aria-label="Your demo profile">
+            <span class="mini-avatar">JD</span><span>My profile</span><span class="chevron">⌄</span>
+          </button>
+        </div>
+      </header>
+
+      <main>
+        <section class="hero" aria-labelledby="hero-title">
+          <div class="hero-copy">
+            <p class="eyebrow"><span class="eyebrow-line"></span> THE RIGHT TEAM CHANGES EVERYTHING</p>
+            <h1 id="hero-title">Find your people.<br /><em>Ship something real.</em></h1>
+            <p class="hero-description">Meet builders who bring the skills your idea is missing.</p>
+          </div>
+          <div class="event-stamp" aria-label="Hackathon weekend, 48 hours">
+            <span class="stamp-top">NEXT UP</span>
+            <strong>48<span>H</span></strong>
+            <span class="stamp-bottom">HACKATHON<br />WEEKEND</span>
+            <span class="stamp-spark" aria-hidden="true">✳</span>
+          </div>
+          <div class="hero-underbar">
+            <div class="community-count"><span class="stacked-avatars" aria-hidden="true"><i>AK</i><i>LM</i><i>PS</i></span><span><strong id="people-count">06</strong> builders open to teaming up</span></div>
+            <span class="hero-note">One great connection can change your whole build <span aria-hidden="true">↘</span></span>
+          </div>
+        </section>
+
+        <section class="workspace" aria-label="Find hackathon teammates">
+          <div class="discovery-column">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow section-kicker">THE BUILDER BOARD <span>01 / 02</span></p>
+                <h2>Find your <span>missing piece.</span></h2>
+              </div>
+              <label class="sort-control">SORT BY
+                <select id="sort-select" aria-label="Sort profiles">
+                  <option value="recommended">Best fit</option>
+                  <option value="newest">Fresh faces</option>
+                  <option value="name">Name A–Z</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="search-row">
+              <label class="search-box" for="search-input">
+                <span class="search-icon" aria-hidden="true">⌕</span>
+                <input id="search-input" type="search" placeholder="Search names, skills, interests…" autocomplete="off" />
+                <kbd>/</kbd>
+              </label>
+              <button id="clear-filters" class="clear-button" type="button">Reset</button>
+            </div>
+
+            <div class="filter-area">
+              <div class="filter-heading"><span>QUICK SKILL FILTERS</span><span class="filter-hint">MATCH ANY</span></div>
+              <div id="skill-filters" class="skill-filters" aria-label="Filter by skills"></div>
+            </div>
+
+            <div class="results-line"><span id="results-count">6 builders</span><span id="active-filter-label">Showing everyone</span></div>
+            <div id="profile-list" class="profile-list" aria-live="polite"></div>
+            <div id="empty-state" class="empty-state" hidden>
+              <span class="empty-mark" aria-hidden="true">?</span>
+              <h3>No matches just yet.</h3>
+              <p>Try another skill or clear your search. Your next teammate might be one filter away.</p>
+              <button id="empty-reset" class="button button-dark" type="button">Clear filters <span aria-hidden="true">↗</span></button>
+            </div>
+          </div>
+
+          <aside class="match-column" aria-labelledby="match-title">
+            <div class="match-panel">
+              <div class="panel-topline"><span class="panel-spark" aria-hidden="true">✳</span><span>YOUR MATCH RADAR</span><span class="panel-live"><i></i> LIVE</span></div>
+              <h2 id="match-title">Good teams<br />are <em>built.</em></h2>
+              <p class="panel-intro">Based on what your build needs and the problems you care about.</p>
+              <div class="you-card">
+                <div class="you-avatar">JD</div>
+                <div><span class="you-label">YOU ARE</span><strong>Frontend builder</strong><span class="you-stack">React · TypeScript · UI</span></div>
+                <button class="edit-profile" type="button" aria-label="Edit demo profile">↗</button>
+              </div>
+              <div class="need-block">
+                <span class="need-label">YOUR TEAM NEEDS</span>
+                <div class="need-tags"><span>Backend</span><span>Product</span><span>Design</span></div>
+              </div>
+              <div class="recommend-heading"><span>PEOPLE TO MEET</span><span>TOP FITS</span></div>
+              <div id="recommendations" class="recommendations"></div>
+              <div class="radar-foot"><span class="radar-icon" aria-hidden="true">◎</span><span>We look for <strong>complementary skills</strong><br />and <strong>shared interests.</strong></span></div>
+            </div>
+            <div class="tip-card"><span class="tip-star" aria-hidden="true">✳</span><p><strong>Pro tip</strong><br />The best hackathon teams aren’t all the same. Find someone who sees your idea differently.</p></div>
+          </aside>
+        </section>
+      </main>
+
+      <footer class="footer"><span>TEAMUP <b>·</b> FIND YOUR PEOPLE, BUILD THE THING.</span><span>MADE FOR THE 48-HOUR MINDSET <b>↗</b></span></footer>
+    </div>
+
+    <dialog id="profile-dialog" class="profile-dialog" aria-labelledby="dialog-name">
+      <form method="dialog"><button class="dialog-close" aria-label="Close profile">×</button></form>
+      <div id="dialog-content"></div>
+    </dialog>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
